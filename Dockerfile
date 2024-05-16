@@ -15,6 +15,9 @@ RUN npm install
 # Copie o restante do código-fonte da aplicação para o diretório de trabalho do contêiner
 COPY . .
 
+# Compile o TypeScript
+RUN npm run build
+
 # Expõe a porta 3000 para o ambiente externo
 EXPOSE 3000
 

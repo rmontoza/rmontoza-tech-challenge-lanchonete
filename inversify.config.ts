@@ -24,7 +24,7 @@ container.bind<IOrderRepository>(TYPES.OrderRepository).to(OrderRepository);
 container.bind<ICustomerRepository>(TYPES.CustomerRepository).to(CustomerRepository);
 container.bind<OrderController>(TYPES.OrderController).to(OrderController);
 container.bind<CustomerController>(TYPES.CustomerController).to(CustomerController);
-container.bind<IDatabase>(TYPES.Database).toConstantValue(new MongoDatabase('mongodb://localhost:27017/lanchonete'));
+container.bind<IDatabase>(TYPES.Database).toConstantValue(new MongoDatabase('mongodb://mongodb:27018/lanchonete'));
 
 export { container };
 
