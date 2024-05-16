@@ -1,4 +1,3 @@
-// src/swagger.ts
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { Express } from 'express';
@@ -8,7 +7,7 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Lanchonete API',
+      title: 'Tech Challenge Lanchonete ',
       version: '1.0.0',
       description: 'Documentação da API da lanchonete',
     },
@@ -18,7 +17,7 @@ const options = {
       },
     ],
   },
-  apis: [path.resolve(__dirname, './**/*.ts')],
+  apis: [path.resolve(__dirname, './**/*.js')],
 };
 
 const specs = swaggerJsdoc(options);

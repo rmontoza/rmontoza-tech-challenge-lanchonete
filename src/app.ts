@@ -1,9 +1,10 @@
-// src/app.ts
-import '../inversify.config'; // Importando para garantir que as dependências sejam resolvidas
+import '../inversify.config';
 import express, { Express } from 'express';
 import { container } from '../inversify.config';
 import { setupSwagger } from './swagger';
 import { OrderController } from './adapter/driver/api/controllers/OrderController';
+import { CustomerController } from './adapter/driver/api/controllers/CustomerController';
+
 import { TYPES } from '../types';
 import { IDatabase } from './adapter/driven/infra/interfaces/IDatabase';
 
@@ -13,17 +14,17 @@ const PORT = process.env.PORT || 3000;
 const database = container.get<IDatabase>(TYPES.Database);
 database.connect();
 
-// Middlewares
 app.use(express.json());
 
-// Configurar Swagger
 setupSwagger(app);
 
-// Inicializar controladores
 const orderController = container.get<OrderController>(TYPES.OrderController);
-app.use(orderController.getRouter());
+const customerController = container.get<CustomerController>(TYPES.CustomerController);
 
-// Iniciar o servidor
+app.use(orderController.getRouter());
+app.use(customerController.getRouter());
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

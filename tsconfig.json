@@ -6,7 +6,10 @@
       "outDir": "./dist",
       "esModuleInterop": true,
       "experimentalDecorators": true,
-      "emitDecoratorMetadata": true
+      "emitDecoratorMetadata": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "sourceMap": true
     },
     "include": ["src/**/*.ts", "inversify.config.ts", "types.ts"],
     "exclude": ["node_modules"]

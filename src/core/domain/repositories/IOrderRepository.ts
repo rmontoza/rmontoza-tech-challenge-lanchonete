@@ -1,6 +1,7 @@
-// src/driven/repositories/OrderRepository.ts
-import Order from '../entities/Order';
+import Order from '../entities/Establishment/Order';
 
 export interface IOrderRepository {
-  create(order: Order): Promise<Order>;
+  createOrder(order: Order): Promise<Order>;
+  getOrders(): Promise<Order[]>;
+
 }

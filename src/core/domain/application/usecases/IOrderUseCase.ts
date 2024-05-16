@@ -1,5 +1,8 @@
-import Order from '../../entities/Order';
+import Order from '../../entities/Establishment/Order';
+import Costumer from '../../entities/Customer/Customer';
+
 
 export interface IOrderUseCase {
-    createOrder(customerName: string, status: string, items: string[]): Promise<Order>;
+    createOrder(costumer: Costumer, status: string, items: string[]): Promise<Order>;
+    getOrders(): Promise<Order[]>;
   }

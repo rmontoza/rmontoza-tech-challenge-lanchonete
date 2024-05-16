@@ -1,4 +1,3 @@
-// infrastructure/MongoDatabase.ts
 import mongoose from 'mongoose';
 import { IDatabase } from '../interfaces/IDatabase';
 
