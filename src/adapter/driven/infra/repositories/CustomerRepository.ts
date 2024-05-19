@@ -1,6 +1,6 @@
-import { id, injectable } from 'inversify';
+import { injectable } from 'inversify';
 import { ICustomerRepository } from '../../../../core/domain/repositories/ICostumerRepository';
-import Customer from '../../../../core/domain/entities/Customer/Customer';
+import Customer from '../../../../core/domain/entities/Customers/Customer';
 import mongoose from 'mongoose';
 
 const CustomerModel = mongoose.model('Costumer', new mongoose.Schema({

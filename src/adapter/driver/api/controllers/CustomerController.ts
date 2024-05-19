@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { injectable, inject } from 'inversify';
-import { ICustomerUseCase } from '../../../../core/domain/application/usecases/ICustomerUseCase';
+import { ICustomerUseCase } from '../../../../core/domain/application/usecases/Customer/ICustomerUseCase';
 import { HandleError } from './errors/HandleError'
 
 import { TYPES } from '../../../../../types';
@@ -18,7 +18,9 @@ export class CustomerController {
   }
 
   private initializeRoutes() {
-    this.router.post('/api/customer', this.createCostumer.bind(this));
+    this.router.post('/api/customers', this.createCustomer.bind(this));
+    this.router.get('/api/customers/:document', this.identifyCustomer.bind(this));
+
   }
 
 /**
@@ -30,7 +32,7 @@ export class CustomerController {
 
   /**
  * @swagger
- * /api/customer:
+ * /api/customers:
  *   post:
  *     tags: [Customer]
  *     summary: Cria um novo cliente
@@ -62,16 +64,55 @@ export class CustomerController {
  *       500:
  *         description: Erro interno do servidor
  */
-  private async createCostumer(req: Request, res: Response) {
+  private async createCustomer(req: Request, res: Response) {
     try {
       const { customerName, document } = req.body;
-      const order = await this.costumerUseCase.createCostumer(customerName, document);
+      const order = await this.costumerUseCase.createCustomer(customerName, document);
       res.status(201).json(order);
     } catch (error) {
       err.handleError(res, error);
     }
   }
 
+  /**
+ * @swagger
+ *  /api/customers/{document}:
+ *    get:
+ *      summary: Identifica o cliente pelo documento
+ *      tags: [Customer]
+ *      parameters:
+ *        - in: path
+ *          name: document
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Documento do cliente
+ *      responses:
+ *        "200":
+ *          description: Cliente encontrado
+ *          content:
+ *            application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 customerName:
+ *                   type: string
+ *                 document:
+ *                   type: string
+ *        "404":
+ *          description: Cliente não encontrado
+ */
+  private async identifyCustomer(req: Request, res: Response) {
+    try {
+      const { document } = req.params;
+      const order = await this.costumerUseCase.identifyCustomer(document);
+      res.status(200).json(order);
+    } catch (error) {
+      err.handleError(res, error);
+    }
+  }
   public getRouter() {
     return this.router;
   }

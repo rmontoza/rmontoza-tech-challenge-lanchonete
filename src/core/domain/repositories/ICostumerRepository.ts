@@ -1,4 +1,4 @@
-import Customer from '../entities/Customer/Customer';
+import Customer from '../entities/Customers/Customer';
 
 export interface ICustomerRepository {
   createCustomer(costumer: Customer): Promise<Customer>;

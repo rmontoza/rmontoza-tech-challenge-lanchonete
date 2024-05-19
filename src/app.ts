@@ -4,6 +4,7 @@ import { container } from '../inversify.config';
 import { setupSwagger } from './swagger';
 import { OrderController } from './adapter/driver/api/controllers/OrderController';
 import { CustomerController } from './adapter/driver/api/controllers/CustomerController';
+import { ProductController } from './adapter/driver/api/controllers/ProductController';
 
 import { TYPES } from '../types';
 import { IDatabase } from './adapter/driven/infra/interfaces/IDatabase';
@@ -20,9 +21,12 @@ setupSwagger(app);
 
 const orderController = container.get<OrderController>(TYPES.OrderController);
 const customerController = container.get<CustomerController>(TYPES.CustomerController);
+const productController = container.get<ProductController>(TYPES.ProductController);
 
 app.use(orderController.getRouter());
 app.use(customerController.getRouter());
+app.use(productController.getRouter());
+
 
 
 app.listen(PORT, () => {

@@ -7,13 +7,13 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Tech Challenge Lanchonete ',
+      title: 'Tech Challenge Lanchonete API',
       version: '1.0.0',
       description: 'Documentação da API da lanchonete',
     },
     servers: [
       {
-        url: 'http://localhost:3000', // URL da sua API
+        url: 'http://localhost:3000',
       },
     ],
   },
@@ -23,6 +23,5 @@ const options = {
 const specs = swaggerJsdoc(options);
 
 export function setupSwagger(app: Express): void {
-  // Rota para exibir a interface do Swagger
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 }
