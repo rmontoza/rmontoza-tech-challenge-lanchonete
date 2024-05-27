@@ -174,7 +174,7 @@ export class OrderController {
     try {
       const { idOrder, status} = req.body;
       const orders = await this.orderUseCase.updateStatusOrder(idOrder, status);
-      res.status(200).json(orders);
+      res.status(204).json(orders);
     } catch (error) {
       console.error('Erro ao atualizar o status pedido:', error);
       err.handleError(res, error);

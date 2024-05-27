@@ -8,6 +8,7 @@ import { ProductController } from './adapter/driver/api/controllers/ProductContr
 
 import { TYPES } from '../types';
 import { IDatabase } from './adapter/driven/infra/interfaces/IDatabase';
+import { CheckoutController } from './adapter/driver/api/controllers/CheckoutController';
 
 const app: Express = express();
 const PORT = process.env.PORT || 3000;
@@ -22,10 +23,13 @@ setupSwagger(app);
 const orderController = container.get<OrderController>(TYPES.OrderController);
 const customerController = container.get<CustomerController>(TYPES.CustomerController);
 const productController = container.get<ProductController>(TYPES.ProductController);
+const checkoutController = container.get<CheckoutController>(TYPES.CheckoutController);
+
 
 app.use(orderController.getRouter());
 app.use(customerController.getRouter());
 app.use(productController.getRouter());
+app.use(checkoutController.getRouter());
 
 
 
