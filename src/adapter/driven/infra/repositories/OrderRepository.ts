@@ -18,11 +18,24 @@ const OrderModel = mongoose.model('Order', new mongoose.Schema({
   document: String,
   status: String,
   orderItem: [OrderItemSchema],
-  valeuOrder: Number
+  valeuOrder: Number,
+  dateCreate: Date
 }));
 
 @injectable()
 export class OrderRepository implements IOrderRepository {
+  
+  async getOrderByNumber(numberOrder: number): Promise<Order | null> {
+    
+    const orderFind = await OrderModel.findOne({orderNumber: numberOrder});
+    const orderItenArray = new Array<OrderItem>();
+
+    orderFind?.orderItem.forEach((item)=>{
+        orderItenArray.push(new OrderItem(item.item!, item.valeu!, item.quanity!));
+    });
+
+    return orderFind != null ?  new Order(orderFind!._id.toString(), orderFind!.orderNumber!, orderFind!.document!, orderFind!.status!, orderItenArray, orderFind!.valeuOrder!, orderFind.dateCreate!) : null;
+  }
 
   async updateStatusOrder(id: string, status: StatusOrderEnum): Promise<void> {
     await OrderModel.findByIdAndUpdate(id, {
@@ -39,18 +52,20 @@ export class OrderRepository implements IOrderRepository {
       document: order.document,
       status: StatusOrderEnum.CREATED,
       orderItem: order.orderItem,
-      valeuOrder: order.valueOrder
+      valeuOrder: order.valueOrder,
+      dateCreate: order.dateCreate
     });
 
     newOrder.orderItem.forEach((item)=>{
       orderItemArray.push(new OrderItem(item.item!, item.valeu!, item.quanity!));
     });
 
-    return new Order(newOrder._id.toString(), newOrder.orderNumber!, newOrder.document!, newOrder.status!, orderItemArray, newOrder.valeuOrder!);
+    return new Order(newOrder._id.toString(), newOrder.orderNumber!, newOrder.document!, newOrder.status!, orderItemArray, newOrder.valeuOrder!, newOrder.dateCreate!);
   }
 
   async getOrders(): Promise<Order[]> {
-      const orders = await OrderModel.find().exec();
+      const orders = await OrderModel.find().where('status').in(["FINISHED", "PREPARING", "CREATED"])
+                                            .sort({dateCreate: "ascending"}).exec();
       const ordersArray = new Array<Order>();
 
 
@@ -62,7 +77,7 @@ export class OrderRepository implements IOrderRepository {
           orderItenArray.push(new OrderItem(item.item!, item.valeu!, item.quanity!));
         });
 
-        ordersArray.push(new Order(order._id.toString(), order.orderNumber!, order.document!, order.status!, orderItenArray, order.valeuOrder!));
+        ordersArray.push(new Order(order._id.toString(), order.orderNumber!, order.document!, order.status!, orderItenArray, order.valeuOrder!, order.dateCreate!));
       }) 
 
       return ordersArray;

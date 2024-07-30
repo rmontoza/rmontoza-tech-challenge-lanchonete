@@ -14,6 +14,9 @@ export class CheckoutUseCase implements ICheckoutUseCase, IOrderUseCase {
     constructor(
         @inject(TYPES.CheckoutRepository) private readonly checkoutRepository: ICheckoutRepository,
       ) {}
+  getOrderByNumber(orderNumber: number): Promise<Order> {
+    throw new Error("Method not implemented.");
+  }
     createOrder(document: string, orderItem: OrderItem[], valueOrder: number): Promise<Order> {
         throw new Error("Method not implemented.");
     }

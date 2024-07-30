@@ -13,6 +13,21 @@ export class OrderUseCase implements IOrderUseCase {
   constructor(
     @inject(TYPES.OrderRepository) private readonly orderRepository: IOrderRepository,
   ) {}
+
+  async getOrderByNumber(orderNumber: number): Promise<Order | null> {
+
+    const order = await this.orderRepository.getOrderByNumber(orderNumber); 
+    
+
+    if(order == null){
+      throw new NotFoundError("Order not found!");
+    }
+
+    return order;
+
+  }
+
+  
   updateStatusOrder(idOrder: string, status: StatusOrderEnum): Promise<void> {
 
     this.validateOrderStatus(status);
@@ -22,16 +37,10 @@ export class OrderUseCase implements IOrderUseCase {
 
 
   createOrder(document: string, orderItem: OrderItem[], valueOrder: number): Promise<Order> {
-    const order = new Order('', 0, document, '', orderItem, valueOrder);
+    const order = new Order('', 0, document, '', orderItem, valueOrder, new Date());
     order.orderNumber = this.generateOrderCode();
     return this.orderRepository.createOrder(order);
   }
-
-
-  findByNumberOrder(orderNumber: number): Promise<Order[]> {
-    throw new Error('Method not implemented.');
-  }
-
 
 
   async getOrders(): Promise<Order[]> {

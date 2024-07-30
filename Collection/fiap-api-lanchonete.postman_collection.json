@@ -1,0 +1,934 @@
+{
+	"info": {
+		"_postman_id": "341809ed-2fa6-4e02-bc94-b8f305f7e0f0",
+		"name": "fiap-api-lanchonete",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2562988",
+		"_collection_link": "https://bold-shuttle-6997.postman.co/workspace/Fiap-Lanchonete~f3768dd5-986e-4b31-803b-b3c83ba0ece9/collection/2562988-341809ed-2fa6-4e02-bc94-b8f305f7e0f0?action=share&source=collection_link&creator=2562988"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "/api/customers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerName\": \"Rodrigo Montoza Ferreira\",\n  \"document\": \"3389876611\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/customers",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Cadastro de Cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerName\": \"Rodrigo Montoza Ferreira\",\n  \"document\": \"3389876611\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{url}}/api/customers",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "99"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"63-8lH+qAWMjXTSgmSoMaLJW4mKsEE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 22:29:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66a96951a9d4a928adf8273a\",\n    \"customerName\": \"Rodrigo Montoza Ferreira\",\n    \"document\": \"3389876611\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/api/customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/api/customers/30385678811",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"30385678811"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Consulta de Cliente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{url}}/api/customers/3389876611",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customers",
+										"3389876611"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "99"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"63-8lH+qAWMjXTSgmSoMaLJW4mKsEE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 22:30:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66a96951a9d4a928adf8273a\",\n    \"customerName\": \"Rodrigo Montoza Ferreira\",\n    \"document\": \"3389876611\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "/api/orders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"document\": \"3389876611\",\n  \"orderItem\": [\n    {\n      \"item\": \"Big Lanche Catupiry\",\n      \"value\": 15.5,\n      \"quanity\": 1\n    },\n    {\n      \"item\": \"Batata Rústica\",\n      \"value\": 8.5,\n      \"quanity\": 1\n    },\n    {\n      \"item\": \"Coca Cola 2 Litros\",\n      \"value\": 12.5,\n      \"quanity\": 1\n    }\n  ],\n  \"valueOrder\": 36.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/orders",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Cadastro de Pedido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"document\": \"3389876611\",\n  \"orderItem\": [\n    {\n      \"item\": \"Big Lanche Catupiry\",\n      \"value\": 15.5,\n      \"quanity\": 1\n    },\n    {\n      \"item\": \"Batata Rústica\",\n      \"value\": 8.5,\n      \"quanity\": 1\n    },\n    {\n      \"item\": \"Coca Cola 2 Litros\",\n      \"value\": 12.5,\n      \"quanity\": 1\n    }\n  ],\n  \"valueOrder\": 36.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{url}}/api/orders",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "292"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"124-RmNg1G/RwpMYJWu6qpSemBCWwjY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 22:31:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66a969b3c28e8b409b404d94\",\n    \"orderNumber\": 60115,\n    \"document\": \"3389876611\",\n    \"status\": \"CREATED\",\n    \"orderItem\": [\n        {\n            \"item\": \"Big Lanche Catupiry\",\n            \"quanity\": 1\n        },\n        {\n            \"item\": \"Batata Rústica\",\n            \"quanity\": 1\n        },\n        {\n            \"item\": \"Coca Cola 2 Litros\",\n            \"quanity\": 1\n        }\n    ],\n    \"valueOrder\": 36.5,\n    \"dateCreate\": \"2024-07-30T22:31:15.998Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/api/order-status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idOrder\": \"66a83b387f53dc1388116263\",\n  \"status\": \"PREPARING\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/order-status",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order-status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Atualiza o Status da Order",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"idOrder\": \"66a969b3c28e8b409b404d94\",\n  \"status\": \"PAIDOUT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{url}}/api/order-status",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order-status"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 22:04:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "/api/orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/api/orders",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Consulta todos os pedidos na ordenados",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{url}}/api/orders",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "388"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"184-fZxbHarGqY4aEDwtNJdGwxYTly4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 21:48:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"66a83b387f53dc1388116263\",\n        \"orderNumber\": 99242,\n        \"document\": \"string\",\n        \"status\": \"PREPARING\",\n        \"orderItem\": [\n            {\n                \"item\": \"string\",\n                \"quanity\": 0\n            }\n        ],\n        \"valueOrder\": 0,\n        \"dateCreate\": \"2024-07-30T01:00:40.102Z\"\n    },\n    {\n        \"id\": \"66a841508a044e0dec152cc5\",\n        \"orderNumber\": 83917,\n        \"document\": \"string\",\n        \"status\": \"FINISHED\",\n        \"orderItem\": [\n            {\n                \"item\": \"string\",\n                \"quanity\": 0\n            }\n        ],\n        \"valueOrder\": 0,\n        \"dateCreate\": \"2024-07-30T01:26:40.155Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "api/order-by-number/{orderNumber}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/api/order-by-number/99242",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order-by-number",
+								"99242"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Consulta de um pedido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{url}}/api/order-by-number/60115",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order-by-number",
+										"60115"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c1-+Dfdh43uVr35XDdo/zIYeHODqks\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 21:48:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66a83b387f53dc1388116263\",\n    \"orderNumber\": 99242,\n    \"document\": \"string\",\n    \"status\": \"PREPARING\",\n    \"orderItem\": [\n        {\n            \"item\": \"string\",\n            \"quanity\": 0\n        }\n    ],\n    \"valueOrder\": 0,\n    \"dateCreate\": \"2024-07-30T01:00:40.102Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "/api/products",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Big Lanche Catupiry\",\n  \"category\": \"Lanche\",\n  \"value\": 15.50,\n  \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/products",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Cadastro de Produto Lanche",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Big Lanche Catupiry\",\n  \"category\": \"Lanche\",\n  \"value\": 15.50,\n  \"active\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{url}}/api/products",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-bOR0rQJ2qu6uZJNTFA2NBlBTxzg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 21:53:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66a960cbc28e8b409b404d83\",\n    \"name\": \"Big Lanche Catupiry\",\n    \"category\": \"Lanche\",\n    \"value\": 15.5,\n    \"active\": true\n}"
+						},
+						{
+							"name": "Cadastro de Produto Acompanhamento",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Batata Rústica\",\n  \"category\": \"Acompanhamento\",\n  \"value\": 8.50,\n  \"active\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{url}}/api/products",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70-oPRFm6e7DR42dxU+Lkrm97nZKlM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 21:54:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66a9611ca9d4a928adf82727\",\n    \"name\": \"Batata Rústica\",\n    \"category\": \"Acompanhamento\",\n    \"value\": 8.5,\n    \"active\": true\n}"
+						},
+						{
+							"name": "Cadastro Produto Bebida",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Coca Cola 2 Litros\",\n  \"category\": \"Bebida\",\n  \"value\": 12.50,\n  \"active\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{url}}/api/products",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-NDBQbZtGzqUXi67UUqh7Vc0dyjI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 21:55:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66a9615ca9d4a928adf82729\",\n    \"name\": \"Coca Cola 2 Litros\",\n    \"category\": \"Bebida\",\n    \"value\": 12.5,\n    \"active\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "/api/products/{categoria [Bebida,Acompanhamento,lanche,Sobremesa]}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/api/products/Bebida",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"Bebida"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Consulta Categoria",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{url}}/api/products/Bebida",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"Bebida"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6e-5Vj+QGCcREPBds377XNCG79w7HU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 21:59:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"66a9615ca9d4a928adf82729\",\n        \"name\": \"Coca Cola 2 Litros\",\n        \"category\": \"Bebida\",\n        \"value\": 12.5,\n        \"active\": true\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Webhook",
+			"item": [
+				{
+					"name": "/api/order-status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idOrder\": \"66a83b387f53dc1388116263\",\n  \"status\": \"PAIDOUT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/order-status",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order-status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "FAILED",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"idOrder\": \"66a83b387f53dc1388116263\",\n  \"status\": \"FAILED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{url}}/api/order-status",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order-status"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 22:27:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "PAIDOUT",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"idOrder\": \"66a83b387f53dc1388116263\",\n  \"status\": \"PAIDOUT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{url}}/api/order-status",
+									"protocol": "http",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order-status"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 22:27:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	]
+}

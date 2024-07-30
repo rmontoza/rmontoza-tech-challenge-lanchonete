@@ -51,9 +51,7 @@ container.bind<CheckoutController>(TYPES.CheckoutController).to(CheckoutControll
 
 
 //Databases
-//container.bind<IDatabase>(TYPES.Database).toConstantValue(new MongoDatabase('mongodb://mongodb-service:27018/lanchonete'));
 container.bind<IDatabase>(TYPES.Database).toConstantValue(new MongoDatabase(`${process.env.MONGODB_URI}`));
-
 
 export { container };
 
