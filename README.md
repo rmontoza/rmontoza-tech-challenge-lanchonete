@@ -60,4 +60,9 @@ Incluímos apenas a rota para a consulta do pedido por número do pedido e, util
 
 Na collection estão apenas as rotas que são utilizadas para o fluxo da criação do pedido até o fechamento, para mais detalhes sobre a API consultar o Swagger
 
+1) Collection
+    https://github.com/rmontoza/rmontoza-tech-challenge-lanchonete/tree/main/Collection/
+2) Manifestos K8s
+    https://github.com/rmontoza/rmontoza-tech-challenge-lanchonete/blob/main/src/k8s/
+
 
