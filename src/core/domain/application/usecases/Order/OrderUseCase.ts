@@ -37,7 +37,12 @@ export class OrderUseCase implements IOrderUseCase {
 
 
   createOrder(document: string, orderItem: OrderItem[], valueOrder: number): Promise<Order> {
+
+
     const order = new Order('', 0, document, '', orderItem, valueOrder, new Date());
+
+    this.validateOrder(order);
+
     order.orderNumber = this.generateOrderCode();
     return this.orderRepository.createOrder(order);
   }
@@ -54,6 +59,12 @@ export class OrderUseCase implements IOrderUseCase {
   private validateOrderStatus(status: any): void {
     if (!Object.values(StatusOrderEnum).includes(status)) {
       throw new ValidationError(`Invalid order status: ${status}`);
+    }
+  }
+
+  private validateOrder(order: Order): void {
+    if (order.orderItem.length == 0) {
+      throw new ValidationError(`Order without items`);
     }
   }
 

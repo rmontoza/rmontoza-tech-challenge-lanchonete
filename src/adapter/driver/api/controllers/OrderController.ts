@@ -93,8 +93,8 @@ export class OrderController {
       const order = await this.orderUseCase.createOrder(document, orderItem, valueOrder);
       res.status(201).json(order);
     } catch (error) {
-      console.error('Erro ao consultar pedidos:', error);
-      res.status(500).json({ error: 'Erro interno do servidor' });
+      console.error('Erro ao criar o pedido:', error);
+      err.handleError(res, error);
     }
   }
 
