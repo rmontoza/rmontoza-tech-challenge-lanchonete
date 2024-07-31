@@ -14,11 +14,11 @@ https://docs.docker.com/desktop/install/mac-install/
 
 Comando para executar e encerrar a aplicação :
 
-A) Primeira execução:
+1) Primeira execução:
     docker-compose up --build
-B) Encerrar a aplicação
+2) Encerrar a aplicação
     docker-compose down
-C) Executar sem o build /  Serve para executar as demais vezes após a compilação dos containers.
+3) Executar sem o build /  Serve para executar as demais vezes após a compilação dos containers.
     docker-compose up
 
 
@@ -47,7 +47,7 @@ http://afc18233acd6040e38b5395599548c95-2064986359.sa-east-1.elb.amazonaws.com/a
 Orientações para utilização da API pelo Postman.
 Observação:
 Não fizemos muitos ajustes na aplicação, pois acreditamos que ela esteja já seguindo os pré requistos da fase 2, como a utilização de SOLID/Code Clean e Arquitetura Hexagonal.
-Incluímos apenas a rota para a consulta do pedido por número do pedido e, utilizaremos como Webhook nossa API de alteração de status de pedido+checkout, pois ela controla todo o fluxo, des da criação até o pagamento.
+Incluímos apenas a rota para a consulta do pedido por número do pedido e, utilizaremos como Webhook nossa API de alteração de status de pedido, pois ela controla todo o fluxo.
 
 1) Cadastrar Produtos
     Utilizar as APIS dos recurso [Products]
@@ -58,6 +58,6 @@ Incluímos apenas a rota para a consulta do pedido por número do pedido e, util
 4) Pagar um Pedido
     Utilizar as APIS dos recurso [Checkout]
 
-Na collection estão apenas as rotas que utilizadas para o fluxo da criação do pedido até o fechamento, para mais detalhes sobre a API consultar o Swagger
+Na collection estão apenas as rotas que são utilizadas para o fluxo da criação do pedido até o fechamento, para mais detalhes sobre a API consultar o Swagger
 
 
