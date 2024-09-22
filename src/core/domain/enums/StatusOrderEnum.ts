@@ -3,5 +3,7 @@ export enum StatusOrderEnum {
     PREPARING = 'PREPARING',
     FINISHED = 'FINISHED',
     PAIDOUT = 'PAIDOUT',
-    FAILED = 'FAILED'
+    FAILED = 'FAILED',
+    OTHER = 'OTHER'
+
 }
