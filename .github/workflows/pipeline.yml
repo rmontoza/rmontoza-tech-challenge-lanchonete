@@ -26,6 +26,8 @@ jobs:
         with:
           node-version: '20'
       - name: Deploy App
-        run: npm run build 
+        run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
