@@ -51,7 +51,7 @@ jobs:
     - name: Build and Push Docker image
       env:
         DOCKER_REPOSITORY: rmontoza/applanchonete
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: latest
 
       run: |
         docker build -t $DOCKER_REPOSITORY:$IMAGE_TAG .
