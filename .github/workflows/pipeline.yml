@@ -36,7 +36,8 @@ jobs:
   push_to_docker_hub:
     runs-on: ubuntu-latest
     needs: build
-
+    if: github.ref == 'refs/heads/main' # Só faz o deploy se estiver na branch 'main'
+    
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
