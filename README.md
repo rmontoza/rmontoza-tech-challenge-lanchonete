@@ -14,11 +14,11 @@ https://docs.docker.com/desktop/install/mac-install/
 
 Comando para executar e encerrar a aplicação :
 
-A) Primeira execução:
+1) Primeira execução:
     docker-compose up --build
-B) Encerrar a aplicação
+2) Encerrar a aplicação
     docker-compose down
-C) Executar sem o build /  Serve para executar as demais vezes após a compilação dos containers.
+3) Executar sem o build /  Serve para executar as demais vezes após a compilação dos containers.
     docker-compose up
 
 
@@ -41,6 +41,28 @@ Passos para instalação simples do NodeJs.
     B) npm start
 
 Acessar a Documentação Via Swagger
-http://localhost:3000/api-docs/
+http://afc18233acd6040e38b5395599548c95-2064986359.sa-east-1.elb.amazonaws.com/api-docs/
+
+
+Orientações para utilização da API pelo Postman.
+Observação:
+Não fizemos muitos ajustes na aplicação, pois acreditamos que ela esteja já seguindo os pré requistos da fase 2, como a utilização de SOLID/Code Clean e Arquitetura Hexagonal.
+Incluímos apenas a rota para a consulta do pedido por número do pedido e, utilizaremos como Webhook nossa API de alteração de status de pedido, pois ela controla todo o fluxo.
+
+1) Cadastrar Produtos
+    Utilizar as APIS dos recurso [Products]
+2) Cadastrar um Cliente
+    Utilizar as APIS dos recurso [Customer]
+3) Cadastrar um Pedido
+    Utilizar as APIS dos recurso [Orders]
+4) Pagar um Pedido
+    Utilizar as APIS dos recurso [Checkout]
+
+Na collection estão apenas as rotas que são utilizadas para o fluxo da criação do pedido até o fechamento, para mais detalhes sobre a API consultar o Swagger
+
+1) Collection
+    https://github.com/rmontoza/rmontoza-tech-challenge-lanchonete/tree/main/Collection/
+2) Manifestos K8s
+    https://github.com/rmontoza/rmontoza-tech-challenge-lanchonete/blob/main/src/k8s/
 
 

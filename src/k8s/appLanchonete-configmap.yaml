@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-lanchonete-config
+  labels:
+    app: app-lanchonete-config
+data:
+  MONGODB_URI: "mongodb+srv://fiaplanchonete:JEtJsquiP7TTAqii@cluster0.em4vflc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"

@@ -13,6 +13,21 @@ export class OrderUseCase implements IOrderUseCase {
   constructor(
     @inject(TYPES.OrderRepository) private readonly orderRepository: IOrderRepository,
   ) {}
+
+  async getOrderByNumber(orderNumber: number): Promise<Order | null> {
+
+    const order = await this.orderRepository.getOrderByNumber(orderNumber); 
+    
+
+    if(order == null){
+      throw new NotFoundError("Order not found!");
+    }
+
+    return order;
+
+  }
+
+  
   updateStatusOrder(idOrder: string, status: StatusOrderEnum): Promise<void> {
 
     this.validateOrderStatus(status);
@@ -22,16 +37,15 @@ export class OrderUseCase implements IOrderUseCase {
 
 
   createOrder(document: string, orderItem: OrderItem[], valueOrder: number): Promise<Order> {
-    const order = new Order('', 0, document, '', orderItem, valueOrder);
+
+
+    const order = new Order('', 0, document, '', orderItem, valueOrder, new Date());
+
+    this.validateOrder(order);
+
     order.orderNumber = this.generateOrderCode();
     return this.orderRepository.createOrder(order);
   }
-
-
-  findByNumberOrder(orderNumber: number): Promise<Order[]> {
-    throw new Error('Method not implemented.');
-  }
-
 
 
   async getOrders(): Promise<Order[]> {
@@ -45,6 +59,12 @@ export class OrderUseCase implements IOrderUseCase {
   private validateOrderStatus(status: any): void {
     if (!Object.values(StatusOrderEnum).includes(status)) {
       throw new ValidationError(`Invalid order status: ${status}`);
+    }
+  }
+
+  private validateOrder(order: Order): void {
+    if (order.orderItem.length == 0) {
+      throw new ValidationError(`Order without items`);
     }
   }
 

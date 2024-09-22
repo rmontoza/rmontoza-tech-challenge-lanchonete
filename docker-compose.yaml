@@ -7,6 +7,8 @@ services:
     image: applanchonete
     ports:
       - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb+srv://fiaplanchonete:JEtJsquiP7TTAqii@cluster0.em4vflc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
     restart: always
     networks:
       - server-net

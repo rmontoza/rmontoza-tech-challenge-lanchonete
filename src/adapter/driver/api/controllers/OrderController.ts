@@ -20,6 +20,7 @@ export class OrderController {
   private initializeRoutes() {
     this.router.post('/api/orders', this.createOrder.bind(this));
     this.router.get('/api/orders', this.getOrders.bind(this));
+    this.router.get('/api/order-by-number/:orderNumber', this.getOrderByNumber.bind(this));
     this.router.put('/api/order-status', this.updateStatusOrder.bind(this));
 
   }
@@ -92,8 +93,8 @@ export class OrderController {
       const order = await this.orderUseCase.createOrder(document, orderItem, valueOrder);
       res.status(201).json(order);
     } catch (error) {
-      console.error('Erro ao consultar pedidos:', error);
-      res.status(500).json({ error: 'Erro interno do servidor' });
+      console.error('Erro ao criar o pedido:', error);
+      err.handleError(res, error);
     }
   }
 
@@ -138,6 +139,62 @@ export class OrderController {
     } catch (error) {
       console.error('Erro ao criar pedido:', error);
       res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+  }
+
+
+  /**
+ * @swagger
+ * /api/order-by-number/{orderNumber}:
+ *   get:
+ *     tags: [Order]
+ *     summary: Consulta Pedido por Número Pedido
+ *     parameters:
+ *       - in: path
+ *         name: orderNumber
+ *         schema:
+ *           type: number
+ *         required: true
+ *         description: Numero do pedido
+ *     responses:
+ *       200:
+ *         description: Pedido consultado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 status:
+ *                   type: string
+ *                 orderItem:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       item:
+ *                         type: string
+ *                       value:
+ *                         type: number
+ *                       quanity:
+ *                         type: number
+ *                 valueOrder:
+ *                   type: number
+ *       500:
+ *         description: Erro interno do servidor
+ */
+
+  private async getOrderByNumber(req: Request, res: Response){
+    try {
+
+      const { orderNumber } = req.params;
+
+      const orders = await this.orderUseCase.getOrderByNumber(Number.parseInt(orderNumber));
+      res.status(200).json(orders);
+    } catch (error) {
+      console.error('Erro ao criar pedido:', error);
+      err.handleError(res, error);
     }
   }
 

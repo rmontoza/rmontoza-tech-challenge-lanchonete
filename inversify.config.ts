@@ -23,7 +23,8 @@ import { CheckoutRepository } from './src/adapter/driven/infra/repositories/Chec
 import { CheckoutController } from './src/adapter/driver/api/controllers/CheckoutController';
 import { ICheckoutUseCase } from './src/core/domain/application/usecases/Checkout/ICheckoutUseCase';
 import { CheckoutUseCase } from './src/core/domain/application/usecases/Checkout/CheckoutUseCase';
-
+import dotenv from 'dotenv';
+dotenv.config();
 
 const container = new Container();
 
@@ -50,9 +51,7 @@ container.bind<CheckoutController>(TYPES.CheckoutController).to(CheckoutControll
 
 
 //Databases
-//container.bind<IDatabase>(TYPES.Database).toConstantValue(new MongoDatabase('mongodb://mongodb:27018/lanchonete'));
-container.bind<IDatabase>(TYPES.Database).toConstantValue(new MongoDatabase('mongodb://localhost:27017/lanchonete'));
-
+container.bind<IDatabase>(TYPES.Database).toConstantValue(new MongoDatabase(`${process.env.MONGODB_URI}`));
 
 export { container };
 
