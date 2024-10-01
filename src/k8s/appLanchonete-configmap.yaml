@@ -5,4 +5,4 @@ metadata:
   labels:
     app: app-lanchonete-config
 data:
-  MONGODB_URI: "mongodb+srv://fiaplanchonete:JEtJsquiP7TTAqii@cluster0.em4vflc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  MONGODB_URI: "mongodb://fiaplanchonete:JEtJsquiP7TTAqii@lanchonete-docdb-cluster.cluster-c1428q0gijk9.us-east-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
