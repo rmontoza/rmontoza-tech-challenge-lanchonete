@@ -10,7 +10,7 @@ class MongoDatabase implements IDatabase {
 
   async connect(): Promise<void> {
     try {
-      await mongoose.connect(`${this.uri}?useNewUrlParser=true`);
+      await mongoose.connect(`${this.uri}&useNewUrlParser=true`);
       console.log('MongoDB connected successfully');
     } catch (error) {
       console.error('Error connecting to MongoDB:', error);
