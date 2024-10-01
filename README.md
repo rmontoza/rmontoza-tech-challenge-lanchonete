@@ -65,4 +65,6 @@ Na collection estão apenas as rotas que são utilizadas para o fluxo da criaç�
 2) Manifestos K8s
     https://github.com/rmontoza/rmontoza-tech-challenge-lanchonete/blob/main/src/k8s/
 
+## teste
+
 
