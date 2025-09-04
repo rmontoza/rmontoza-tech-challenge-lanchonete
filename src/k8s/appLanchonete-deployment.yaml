@@ -22,8 +22,8 @@ spec:
         env:
         - name: MONGODB_URI
           valueFrom:
-            configMapKeyRef:
-              name: app-lanchonete-config
+            secretKeyRef:
+              name: app-lanchonete-secret
               key: MONGODB_URI
         volumeMounts:
         - name: app-lanchonete-volume

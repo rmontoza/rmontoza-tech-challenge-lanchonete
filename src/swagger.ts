@@ -13,7 +13,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://afc18233acd6040e38b5395599548c95-2064986359.sa-east-1.elb.amazonaws.com',
+        url: 'http://localhost:3000',
       },
     ],
   },

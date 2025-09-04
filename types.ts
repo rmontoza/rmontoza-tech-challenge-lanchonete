@@ -10,6 +10,7 @@ const TYPES = {
     ProductController: Symbol.for('ProductController'),
 
     CheckoutController: Symbol.for('CheckoutController'),
+    WebhookController: Symbol.for('WebhookController'),
 
     OrderRepository: Symbol.for('OrderRepository'),
     CustomerRepository: Symbol.for('CustomerRepository'),

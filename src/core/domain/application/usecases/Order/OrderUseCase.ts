@@ -29,10 +29,15 @@ export class OrderUseCase implements IOrderUseCase {
 
   
   updateStatusOrder(idOrder: string, status: StatusOrderEnum): Promise<void> {
-
     this.validateOrderStatus(status);
-    
-    return this.orderRepository.updateStatusOrder(idOrder, status);
+    return (async () => {
+      const current = await this.orderRepository.getById(idOrder);
+      if (!current) {
+        throw new NotFoundError('Order not found!');
+      }
+      this.ensureValidTransition(current.status as StatusOrderEnum, status);
+      await this.orderRepository.updateStatusOrder(idOrder, status);
+    })();
   }
 
 
@@ -59,6 +64,20 @@ export class OrderUseCase implements IOrderUseCase {
   private validateOrderStatus(status: any): void {
     if (!Object.values(StatusOrderEnum).includes(status)) {
       throw new ValidationError(`Invalid order status: ${status}`);
+    }
+  }
+
+  private ensureValidTransition(currentStatus: StatusOrderEnum, nextStatus: StatusOrderEnum): void {
+    const allowed: Record<StatusOrderEnum, StatusOrderEnum[]> = {
+      [StatusOrderEnum.CREATED]: [StatusOrderEnum.PREPARING],
+      [StatusOrderEnum.PREPARING]: [StatusOrderEnum.FINISHED],
+      [StatusOrderEnum.FINISHED]: [StatusOrderEnum.PAIDOUT],
+      [StatusOrderEnum.PAIDOUT]: [],
+      [StatusOrderEnum.FAILED]: [],
+    };
+    const allowedNext = allowed[currentStatus] || [];
+    if (!allowedNext.includes(nextStatus)) {
+      throw new ValidationError(`Invalid status transition: ${currentStatus} -> ${nextStatus}`);
     }
   }
 

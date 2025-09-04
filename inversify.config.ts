@@ -21,6 +21,7 @@ import { ProductController } from './src/adapter/driver/api/controllers/ProductC
 import { ICheckoutRepository } from './src/core/domain/repositories/ICheckoutRepository';
 import { CheckoutRepository } from './src/adapter/driven/infra/repositories/CheckoutRepository';
 import { CheckoutController } from './src/adapter/driver/api/controllers/CheckoutController';
+import { WebhookController } from './src/adapter/driver/api/controllers/WebhookController';
 import { ICheckoutUseCase } from './src/core/domain/application/usecases/Checkout/ICheckoutUseCase';
 import { CheckoutUseCase } from './src/core/domain/application/usecases/Checkout/CheckoutUseCase';
 import dotenv from 'dotenv';
@@ -47,6 +48,7 @@ container.bind<OrderController>(TYPES.OrderController).to(OrderController);
 container.bind<CustomerController>(TYPES.CustomerController).to(CustomerController);
 container.bind<ProductController>(TYPES.ProductController).to(ProductController);
 container.bind<CheckoutController>(TYPES.CheckoutController).to(CheckoutController);
+container.bind<WebhookController>(TYPES.WebhookController).to(WebhookController);
 
 
 

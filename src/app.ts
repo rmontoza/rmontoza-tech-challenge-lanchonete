@@ -9,6 +9,7 @@ import { ProductController } from './adapter/driver/api/controllers/ProductContr
 import { TYPES } from '../types';
 import { IDatabase } from './adapter/driven/infra/interfaces/IDatabase';
 import { CheckoutController } from './adapter/driver/api/controllers/CheckoutController';
+import { WebhookController } from './adapter/driver/api/controllers/WebhookController';
 
 const app: Express = express();
 const PORT = process.env.PORT || 3000;
@@ -24,12 +25,14 @@ const orderController = container.get<OrderController>(TYPES.OrderController);
 const customerController = container.get<CustomerController>(TYPES.CustomerController);
 const productController = container.get<ProductController>(TYPES.ProductController);
 const checkoutController = container.get<CheckoutController>(TYPES.CheckoutController);
+const webhookController = container.get<WebhookController>(TYPES.WebhookController);
 
 
 app.use(orderController.getRouter());
 app.use(customerController.getRouter());
 app.use(productController.getRouter());
 app.use(checkoutController.getRouter());
+app.use(webhookController.getRouter());
 
 
 

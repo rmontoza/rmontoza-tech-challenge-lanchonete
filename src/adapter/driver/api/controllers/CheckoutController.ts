@@ -3,7 +3,6 @@ import { ICheckoutUseCase } from "../../../../core/domain/application/usecases/C
 import { TYPES } from "../../../../../types";
 import express, { Request, Response } from 'express';
 import { HandleError } from "./errors/HandleError";
-import { StatusOrderEnum } from "../../../../core/domain/enums/StatusOrderEnum";
 
 const err = new HandleError();
 
@@ -52,7 +51,7 @@ export class CheckoutController {
     private async checkout(req: Request, res: Response) {
         try {
           const { idOrder } = req.body;
-          const order = await this.checkoutUseCase.checkout(idOrder, StatusOrderEnum.PAIDOUT);
+          const order = await this.checkoutUseCase.checkout(idOrder);
           res.status(204).json(order);
         } catch (error) {
           err.handleError(res, error);

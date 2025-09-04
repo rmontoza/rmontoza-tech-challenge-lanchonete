@@ -24,6 +24,15 @@ const OrderModel = mongoose.model('Order', new mongoose.Schema({
 
 @injectable()
 export class OrderRepository implements IOrderRepository {
+  async getById(id: string): Promise<Order | null> {
+    const orderFind = await OrderModel.findById(id);
+    if (!orderFind) return null;
+    const orderItenArray = new Array<OrderItem>();
+    orderFind.orderItem.forEach((item)=>{
+      orderItenArray.push(new OrderItem(item.item!, item.valeu!, item.quanity!));
+    });
+    return new Order(orderFind!._id.toString(), orderFind!.orderNumber!, orderFind!.document!, orderFind!.status!, orderItenArray, orderFind!.valeuOrder!, orderFind.dateCreate!);
+  }
   
   async getOrderByNumber(numberOrder: number): Promise<Order | null> {
     
